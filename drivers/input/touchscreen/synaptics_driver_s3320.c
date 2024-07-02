@@ -4006,7 +4006,7 @@ int tp_single_tap_en(struct synaptics_ts_data *ts, bool enable)
 	return ret;
 }
 
-static ssize_t tp_gesture_touch_hold_show(struct device *dev,
+static ssize_t tp_gesture_touch_hold_show /* Make sure this identifier is declared properly. */(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
 	int ret = 0;
@@ -4024,7 +4024,7 @@ static ssize_t tp_gesture_touch_hold_show(struct device *dev,
 	return snprintf(buf, 6, "0x%x\n", touch_hold_enable);
 }
 
-static ssize_t tp_gesture_touch_hold_store(struct device *dev,
+static ssize_t tp_gesture_touch_hold_store /* Make sure this identifier is declared properly. */(struct device *dev,
 		struct device_attribute *attr,
 		const char *buf, size_t size)
 {
@@ -4106,8 +4106,7 @@ static DRIVER_ATTR(tp_debug_log, 0664, tp_show, store_tp);
 static DEVICE_ATTR(tp_fw_update, 0664, synaptics_update_fw_show, synaptics_update_fw_store);
 static DEVICE_ATTR(tp_doze_time, 0664, tp_doze_time_show, tp_doze_time_store);
 static DEVICE_ATTR(tp_gesture_touch_hold, 0664,
-	tp_gesture_touch_hold_show, tp_gesture_touch_hold_store);
-static int synaptics_dsx_pinctrl_init(struct synaptics_ts_data *ts);
+	tp_gesture_touch_hold_show /* Make sure this identifier is declared properly. */, tp_gesture_touch_hold_store /* Make sure this identifier is declared properly. */);
 
 static ssize_t tp_debug_log_write_func(
 	struct file *file, const char *buffer,
@@ -5655,7 +5654,6 @@ static int synaptics_parse_dts(struct device *dev, struct synaptics_ts_data *ts)
 	return rc;
 }
 
-static int synaptics_dsx_pinctrl_init(struct synaptics_ts_data *ts)
 {
 	int retval;
 
