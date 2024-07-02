@@ -3791,7 +3791,8 @@ static ssize_t synaptics_update_fw_show(struct device *dev,
 		struct device_attribute *attr, char *buf)
 {
 	struct synaptics_ts_data *data = dev_get_drvdata(dev);
-	return snprintf(buf, 2, "%d\n", data->loading_fw);
+	return snprintf(buf, 4, "%d
+", data->loading_fw);
 }
 
 static ssize_t synaptics_update_fw_store(struct device *dev,
@@ -3930,10 +3931,12 @@ static ssize_t tp_doze_time_show(struct device *dev,
 
 	ret = synaptics_rmi4_i2c_write_byte(ts->client, 0xff, 0x00);
 	if (ret < 0)
-		return snprintf(buf, 16, "switch page err\n");
+		return snprintf(buf, 20, "switch page err
+");
 
 	doze_time = i2c_smbus_read_byte_data(ts->client, F01_RMI_CTRL02);
-	return snprintf(buf, 2, "%d\n", doze_time);
+	return snprintf(buf, 4, "%d
+", doze_time);
 }
 
 static ssize_t tp_doze_time_store(struct device *dev,
@@ -4012,7 +4015,8 @@ static ssize_t tp_gesture_touch_hold_show(struct device *dev,
 	/* SYNA_F51_CUSTOM_CTRL20_00 0x0428*/
 	ret = synaptics_rmi4_i2c_write_byte(ts->client, 0xff, 0x04);
 	if (ret < 0)
-		return snprintf(buf, 16, "switch page err\n");
+		return snprintf(buf, 20, "switch page err
+");
 	touch_hold_enable = i2c_smbus_read_byte_data(ts->client, 0x2c);
 	ret = synaptics_rmi4_i2c_write_byte(ts->client, 0xff, 0x00);
 	if (ret < 0)
